@@ -138,7 +138,7 @@ static bool read_info(struct app *self, const uint8_t group,
 }
 
 static void *aligned_alloc_impl(size_t alignment, size_t size) {
-#if defined _MSC_VER || __GNUC__
+#if defined _MSC_VER || (defined __GNUC__ && defined _WIN32)
   return _aligned_malloc(size, alignment);
 #else
   // return aligned_alloc(alignment, size);
